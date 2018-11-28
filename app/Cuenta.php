@@ -1,4 +1,5 @@
-<?php namespace polleria;
+<?php 
+namespace polleria;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +12,7 @@ class Cuenta extends Model
   protected $filable = [
   'idcliente',
   'saldo',
-  'idventa'
+  //'idventa'
   ];
     public function cliente()
     {

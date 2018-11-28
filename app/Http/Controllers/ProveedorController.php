@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use polleria\Http\Requests;
 use polleria\Proveedor;
 use Illuminate\Support\Facades\Redirect;
-use polleria\Http\Requests\PersonaFormRequest;
+use polleria\Http\Requests\ProveedorFormRequest;
 use DB;
 
 

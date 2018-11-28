@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 use polleria\Http\Requests;
 use polleria\Cliente;
+use polleria\Cuenta;
 use Illuminate\Support\Facades\Redirect;
-use polleria\Http\Requests\PersonaFormRequest;
+use polleria\Http\Requests\ClienteFormRequest;
 use DB;
 
 class ClienteController extends Controller
@@ -21,9 +22,9 @@ class ClienteController extends Controller
       if ($request) {
         $query= trim($request->get('searchText'));
         $personas=DB::table('clientes')
+          ->where('estado','=','activo')
           ->where('nombre','like','%'.$query.'%')
-          //->where('tipo_persona','=','cliente')
-          ->orwhere('documento','like','%'.$query.'%')
+          //->orwhere('documento','like','%'.$query.'%')
           //->where('tipo_persona','=','cliente')
           ->orderby('idcliente','desc')
           ->paginate(9)
@@ -45,6 +46,13 @@ class ClienteController extends Controller
       $persona->email= $request->get('email');
       $persona->estado= "activo";
       $persona->save();
+
+      $cuenta = new Cuenta;
+      $cuenta->saldo= 0;
+      $cuenta->save();
+
+      //$persona->cuenta()->attach($cuenta);
+
       return Redirect::to('ventas/cliente');
 
     }

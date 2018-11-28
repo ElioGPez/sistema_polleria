@@ -76,7 +76,6 @@ class VentaController extends Controller
        // dd( $venta->total_venta);
 
         $venta->save();
-
         if($request->seleccionado == 1){
         $cuentaDB=DB::table('cuentas')->where('idcliente','=',$request->idcliente)->get();
         $cuenta= Cuenta::findOrfail($cuentaDB[0]->idcuenta);
@@ -97,6 +96,8 @@ class VentaController extends Controller
 
         $cont = 0;
         while ($cont < count($idarticulo) ) {
+
+
           $detalle=new DetalleVenta();
           $detalle->idventa=$venta->idventa;
           $detalle->idarticulo=$idarticulo[$cont];
