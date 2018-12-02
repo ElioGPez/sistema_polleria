@@ -49,6 +49,7 @@ class ClienteController extends Controller
 
       $cuenta = new Cuenta;
       $cuenta->saldo= 0;
+      $cuenta->idcliente= $persona->idcliente;
       $cuenta->save();
 
       //$persona->cuenta()->attach($cuenta);

@@ -52,7 +52,7 @@ class CuentaController extends Controller
       //dd($ventas);
       //dd($cuenta);
       return view('ventas.cliente.cuenta.show',['cuenta'=>$cuenta,'ventas'=>$ventas,'pagos'=>$pagos]);
-    }
+    } 
     public function ajax(Request $request){
          $Pago = new Pago();
          $Pago->monto = $request->monto;

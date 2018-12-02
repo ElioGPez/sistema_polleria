@@ -139,9 +139,9 @@
               var fila='<tr class="selected" id="fila"> '+
 
                           '<td name="idpago[]" value="">0</td>'+
-                          '<td name="monto[]" value="">'+pago+'</td>'+
-                          '<td name="estado[]" value="">A</td>'+
                           '<td name="fecha[]" value="">Hoy</td>'+
+                          '<td name="estado[]" value="">A</td>'+
+                          '<td name="monto[]" value="">'+pago+'</td>'+
                         //  '<td>'+subtotal[contador]+'</td>'+
                       '</tr>';
       $.each(msg,function(index,el){
