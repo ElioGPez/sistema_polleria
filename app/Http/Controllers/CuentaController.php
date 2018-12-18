@@ -10,7 +10,7 @@ use polleria\Cuenta;
 use polleria\Cliente;
 use polleria\Pago;
 use Carbon\Carbon;
-
+use polleria\Http\Requests\CuentaFormRequest;
 
 class CuentaController extends Controller
 {
@@ -53,7 +53,7 @@ class CuentaController extends Controller
       //dd($cuenta);
       return view('ventas.cliente.cuenta.show',['cuenta'=>$cuenta,'ventas'=>$ventas,'pagos'=>$pagos]);
     } 
-    public function ajax(Request $request){
+    public function ajax(CuentaFormRequest $request){
          $Pago = new Pago();
          $Pago->monto = $request->monto;
          $Pago->idcuenta = $request->idcuenta;

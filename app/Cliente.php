@@ -17,7 +17,7 @@ class Cliente extends Model
       'telefono',
       'email',
       'estado'
-    ];
+    ]; 
     public function cuenta()
     {
         return $this->hasOne('polleria\Cuenta');
