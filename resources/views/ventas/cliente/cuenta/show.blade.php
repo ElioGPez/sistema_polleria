@@ -39,7 +39,7 @@
             </div>
             <table class="table table-striped table-bordered table-condensed table-hover">
               <thead style="background-color:#A9D0F5">
-                <th>ID</th>
+                <th style="display: none">ID</th>
                 <th>Fecha</th>
                 <th>Estado</th>
                 <th>Total</th>
@@ -54,7 +54,7 @@
               <tbody>
                 @foreach ($ventas as $venta)
                   <tr>
-                    <td>{{$venta->idventa}}</td>
+                    <td style="display: none">{{$venta->idventa}}</td>
                     <td>{{$venta->fecha}}</td>
                     <td>{{$venta->estado}}</td>
                     <td>{{$venta->total_venta}}</td>
@@ -71,7 +71,7 @@
             </div>
             <table class="table table-striped table-bordered table-condensed table-hover" id="detalles">
               <thead style="background-color:#A9D0F5">
-                <th>ID</th>
+                <th style="display: none">ID</th>
                 <th>Fecha</th>
                 <th>Estado</th>
                 <th>Total</th>
@@ -86,7 +86,7 @@
               <tbody>
                 @foreach ($pagos as $pago)
                   <tr>
-                    <td>{{$pago->idpago}}</td>
+                    <td style="display: none">{{$pago->idpago}}</td>
                     <td>{{$pago->fecha}}</td>
                     <td>{{$pago->estado}}</td>
                     <td>{{$pago->monto}}</td>
@@ -135,17 +135,24 @@
             idcuenta: "{{$cuenta->idcuenta}}"
         }, success: function (msg) {
           if($.isEmptyObject(msg.error)){
-                            alert("Se ha realizado el POST con exito ");
+        //                    alert("Se ha realizado el POST con exito ");
+
+        var dt = new Date();
+        var mes = dt.getMonth()+1;
+        var dia = dt.getDate();
+        var año = dt.getFullYear();
+        var fechaActual = año + '-' + mes + '-' + dia;
+
               var fila='<tr class="selected" id="fila"> '+
 
-                          '<td name="idpago[]" value="">0</td>'+
-                          '<td name="fecha[]" value="">Hoy</td>'+
+                          '<td style="display: none" name="idpago[]" value="">0</td>'+
+                          '<td name="fecha[]" value="">'+fechaActual+'</td>'+
                           '<td name="estado[]" value="">A</td>'+
                           '<td name="monto[]" value="">'+pago+'</td>'+
                         //  '<td>'+subtotal[contador]+'</td>'+
                       '</tr>';
       $.each(msg,function(index,el){
-        alert(el.monto);
+      //  alert(el.monto);
       });
               contador++;
               limpiar();
