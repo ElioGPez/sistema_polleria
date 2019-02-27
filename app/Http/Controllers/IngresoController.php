@@ -22,7 +22,7 @@ class IngresoController extends Controller
     public function __construct(){
 
     }
- 
+  
     public function index(Request $request){
       if ($request) {
         $query = trim($request->get('searchText'));
@@ -34,6 +34,7 @@ class IngresoController extends Controller
         ->orderBy('i.idingreso','DESC')
         ->groupBy('i.idingreso','i.fecha','p.razonsocial','i.estado')
         ->paginate(9);
+        //dd($ingresos);
         return view('compras.ingreso.index',['ingresos'=>$ingresos,'searchText'=>$query]);
       }
     }

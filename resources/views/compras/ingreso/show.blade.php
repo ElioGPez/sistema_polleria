@@ -8,7 +8,11 @@
           <label for="proveedor">Proveedor</label>
           <p>{{$ingreso->razonsocial}}</p>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="proveedor">Fecha</label>
+          <p>{{$ingreso->fecha}}</p>
+        </div>
+      </div> 
 
     </div>
     <div class="row">
