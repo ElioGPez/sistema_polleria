@@ -21,11 +21,11 @@
 
             <th>Opciones</th>
           </thead>
-          @foreach ($personas as $per)
+          @foreach ($clientes as $per)
             <tr>
               <td>{{$per->idcliente}}</td>
               <td>{{$per->nombre}}</td>
-              <td>{{$per->documento}}</td>
+              <td>{{$per->documento}}</td> 
               <td>{{$per->telefono}}</td>
               <td>{{$per->email}}</td>
               <td>
@@ -38,7 +38,7 @@
           @endforeach
         </table>
       </div>
-      {{$personas->render()}}
+      {{$clientes->render()}}
     </div>
   </div>
 @endsection

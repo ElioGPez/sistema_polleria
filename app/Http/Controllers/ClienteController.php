@@ -21,7 +21,7 @@ class ClienteController extends Controller
     public function index(Request $request){
       if ($request) {
         $query= trim($request->get('searchText'));
-        $personas=DB::table('clientes')
+        $clientes=DB::table('clientes')
           ->where('estado','=','activo')
           ->where('nombre','like','%'.$query.'%')
           //->orwhere('documento','like','%'.$query.'%')
@@ -29,7 +29,7 @@ class ClienteController extends Controller
           ->orderby('idcliente','desc')
           ->paginate(9)
           ;
-          return view('ventas.cliente.index',['personas'=>$personas,'searchText'=>$query]);
+          return view('ventas.cliente.index',['clientes'=>$clientes,'searchText'=>$query]);
       }
     }
     public function create(){
@@ -62,21 +62,22 @@ class ClienteController extends Controller
       return view('ventas.cliente.show',['persona'=>Cliente::findOrFail($id)]);
     }
     public function edit($id){
-      return view('ventas.cliente.edit',['persona'=>Cliente::findOrFail($id)]);
+      return view('ventas.cliente.edit',['cliente'=>Cliente::findOrFail($id)]);
 
     }
-    public function update(PersonaFormRequest $request, $id){
-            dd($request);
+    public function update(ClienteFormRequest $request, $id){
+      if ($request) {
+      //      dd($request);
 
       $persona = Cliente::findOrFail($id);
       $persona->nombre= $request->get('nombre');
-      //$persona->tipo_documento= $request->get('tipo_documento');
       $persona->documento= $request->get('documento');
       $persona->direccion= $request->get('direccion');
       $persona->telefono= $request->get('telefono');
       $persona->email= $request->get('email');
-   //   $persona->save();
+      $persona->save();
       return Redirect::to('ventas/cliente');
+      }
     }
 
 
