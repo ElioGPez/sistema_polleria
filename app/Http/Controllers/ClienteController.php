@@ -66,14 +66,16 @@ class ClienteController extends Controller
 
     }
     public function update(PersonaFormRequest $request, $id){
+            dd($request);
+
       $persona = Cliente::findOrFail($id);
       $persona->nombre= $request->get('nombre');
       //$persona->tipo_documento= $request->get('tipo_documento');
-      $persona->documento= $request->get('num_documento');
+      $persona->documento= $request->get('documento');
       $persona->direccion= $request->get('direccion');
       $persona->telefono= $request->get('telefono');
       $persona->email= $request->get('email');
-      $persona->save();
+   //   $persona->save();
       return Redirect::to('ventas/cliente');
     }
 

@@ -14,7 +14,7 @@
       @endif
     </div>
   </div>
-  {!!Form::model($persona,['method'=>'PATCH','route'=>['ventas.cliente.update',$persona->idpersona]])!!}
+  {!!Form::model($persona,['method'=>'POST','route'=>['ventas.cliente.update',$persona->idpersona]])!!}
   {!!Form::token()!!}
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -32,7 +32,7 @@
 
 
 
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+    <!--div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       <div class="form-group">
         <label for="">Documento</label>
         <select class="form-control" name="tipo_documento">
@@ -51,11 +51,11 @@
           @endif
         </select>
       </div>
-    </div>
+    </div-->
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       <div class="form-group">
-        <label for="num_documento">Documento</label>
-        <input type="text" name="num_documento" value="{{$persona->num_documento}}" class="form-control" placeholder="Documento ...">
+        <label for="documento">Documento</label>
+        <input type="text" name="documento" value="{{$persona->documento}}" class="form-control" placeholder="Documento ...">
       </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
