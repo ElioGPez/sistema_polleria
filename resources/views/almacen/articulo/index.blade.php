@@ -18,6 +18,7 @@
             <th>Codigo</th>
             <th>Categoria</th>
             <th>Stock</th>
+            <th>Precio</th>
             <th>Imagen</th>
             <th>Estado</th>
             <th>Opciones</th>
@@ -29,6 +30,7 @@
               <td>{{$art->codigo}}</td>
               <td>{{$art->categoria}}</td>
               <td>{{$art->stock}}</td>
+              <td>{{$art->precio_venta}}</td>
               <td>
                 <img src="{{asset('imagenes/articulos/'.$art->imagen)}}" alt="{{$art->nombre}}" height="100px" width="100px" class="img-thumbnail">
               </td>

@@ -23,9 +23,9 @@ class ProveedorController extends Controller
       if ($request) {
         $query= trim($request->get('searchText'));
         $personas=DB::table('proveedors')
-          ->where('razonsocial','like','%'.$query.'%')
-         // ->where('tipo_persona','=','proveedor')
-          ->orwhere('cuit','like','%'.$query.'%')
+        ->where('estado','=','activo')
+        ->where('razonsocial','like','%'.$query.'%')
+          //->where('cuit','like','%'.$query.'%')
         //  ->where('tipo_persona','=','proveedor')
           ->orderby('idproveedor','desc')
           ->paginate(9)
@@ -73,6 +73,7 @@ class ProveedorController extends Controller
 
     public function destroy($id){
       $persona = Proveedor::findOrFail($id);
+      //dd($persona);
       $persona->estado="Inactivo";
       $persona->update();
       return Redirect::to('compras/proveedor');

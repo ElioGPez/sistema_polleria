@@ -21,6 +21,7 @@ class ArticulosTable extends Migration
             $table->integer('stock');
             $table->string('estado');
             $table->string('imagen');
+            $table->float('precio_venta');
             $table->integer('idcategoria')->unsigned();
             $table->foreign('idcategoria')->references('idcategoria')->on('idcategoria')->ondelete('cascade');
             $table->timestamps();

@@ -22,9 +22,10 @@ class ArticuloController extends Controller
         $query= trim($request->get('searchText'));
         $articulos=DB::table('articulos as a')
           ->join('categorias as c','a.idcategoria','=','c.idcategoria')
-          ->select('a.idarticulo','a.nombre','a.codigo','a.stock','c.nombre as categoria','a.descripcion','a.imagen','a.estado')
-          ->where('a.nombre','like','%'.$query.'%')
-          ->orwhere('a.codigo','like','%'.$query.'%')
+          ->select('a.idarticulo','a.nombre','a.codigo','a.stock','c.nombre as categoria','a.precio_venta','a.descripcion','a.imagen','a.estado')
+          ->where('estado','=','activo')
+         // ->where('a.nombre','like','%'.$query.'%')
+          ->where('a.codigo','like','%'.$query.'%')
           ->orderby('a.idarticulo','desc')
           ->paginate(9)
           ;
@@ -38,12 +39,15 @@ class ArticuloController extends Controller
     }
 
     public function store(ArticuloFormRequest $request){
+    //  dd($request);
       $articulo = new Articulo;
       $articulo->idcategoria=$request->get('idcategoria');
       $articulo->codigo=$request->get('codigo');
       $articulo->nombre=$request->get('nombre');
       $articulo->stock=$request->get('stock');
       $articulo->descripcion=$request->get('descripcion');
+      $articulo->precio_venta=$request->get('precio_venta');
+
       $articulo->estado="Activo";
       if (Input::hasFile('imagen')) {
         $file=Input::file('imagen');
@@ -73,6 +77,8 @@ class ArticuloController extends Controller
       $articulo->stock=$request->get('stock');
       $articulo->descripcion=$request->get('descripcion');
       $articulo->estado= $request->get('estado');
+      $articulo->precio_venta=$request->get('precio_venta');
+
       if (Input::hasFile('imagen')) {
         $file=Input::file('imagen');
         $file->move(public_path().'/imagenes/articulos',$file->getClientOriginalName());

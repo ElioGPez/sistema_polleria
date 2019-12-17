@@ -17,7 +17,6 @@ class DetalleIngresoTable extends Migration
             $table->increments('iddetalle_ingreso');
             $table->integer('cantidad');
             $table->float('precio_compra');
-            $table->float('precio_venta');
             $table->integer('idingreso')->unsigned();
             $table->foreign('idingreso')->references('idingreso')->on('ingresos')->ondelete('cascade');
             $table->integer('idarticulo')->unsigned();

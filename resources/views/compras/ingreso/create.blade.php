@@ -60,12 +60,12 @@
             </div>
           </div>
           {{-- precio venta --}}
-          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+          <!-- div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
             <div class="form-group">
               <label for="precio_venta">Precio Venta</label>
               <input type="number" name="pprecio_venta"  id="pprecio_venta" value="" class="form-control" placeholder="P. venta">
             </div>
-          </div>
+          </div -->
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
             <div class="form-group">
               <button type="button" id="bt_add" class="btn btn-primary">Agregar</button>
@@ -79,12 +79,11 @@
                 <th>Articulo</th>
                 <th>Cantidad</th>
                 <th>Precio Compra</th>
-                <th>Precio Venta</th>
+                <!-- th>Precio Venta</th -->
                 <th>Subtotal</th>
               </thead>
               <tfoot>
                 <th>TOTAL</th>
-                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -126,9 +125,8 @@
           articulo=$("#pidarticulo option:selected").text();
           cantidad=$("#pcantidad").val();
           precio_compra=$("#pprecio_compra").val();
-          precio_venta=$("#pprecio_venta").val();
           //valido los datos
-          if (idarticulo!="" && cantidad!="" && cantidad>0 && precio_compra!="" && precio_venta!="") {
+          if (idarticulo!="" && cantidad!="" && cantidad>0 && precio_compra!="") {
             subtotal[contador]=(cantidad*precio_compra);
             total=total+subtotal[contador];
             var fila='<tr class="selected" id="fila'+contador+'"> '+
@@ -136,7 +134,6 @@
                         '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</input></td>'+
                         '<td><input type="number" name="cantidad[]" value="'+cantidad+'"></td>'+
                         '<td><input type="number" name="precio_compra[]" value="'+precio_compra+'"></td>'+
-                        '<td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td>'+
                         '<td>'+subtotal[contador]+'</td>'+
                     '</tr>';
             contador++;
@@ -154,7 +151,7 @@
       function limpiar(){
         $("#pcantidad").val("");
         $("#pprecio_compra").val("");
-        $("#pprecio_venta").val("");
+       // $("#pprecio_venta").val("");
       }
       function evaluar(){
         if(total>0){

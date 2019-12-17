@@ -31,7 +31,7 @@ class ArticuloFormRequest extends Request
             'stock'=>'required|numeric',
             'descripcion'=>'max:512',
             'imagen'=>'mimes:jpeg,bmp,png',
-
+            'precio_venta'=>'required',
         ];
     }
 }

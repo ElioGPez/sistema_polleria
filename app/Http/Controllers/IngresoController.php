@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use polleria\Http\Requests\IngresoFormRequest;
 use polleria\Ingreso;
+use polleria\Articulo;
 use polleria\DetalleIngreso;
 use DB;
 
@@ -65,17 +66,22 @@ class IngresoController extends Controller
         $idarticulo = $request->get('idarticulo');
         $cantidad = $request->get('cantidad');
         $precio_compra = $request->get('precio_compra');
-        $precio_venta=$request->get('precio_venta');
+        //$precio_venta=$request->get('precio_venta');
  
         $cont = 0;
-
         while ($cont < count($idarticulo) ) {
           $detalle=new DetalleIngreso();
           $detalle->idingreso=$ingreso->idingreso;
           $detalle->idarticulo=$idarticulo[$cont];
           $detalle->cantidad=$cantidad[$cont];
           $detalle->precio_compra=$precio_compra[$cont];
-          $detalle->precio_venta=$precio_venta[$cont];
+          //$detalle->precio_venta=$precio_venta[$cont];
+          //Actualizamos el stock del articulo i
+          $articulo= Articulo::findOrfail($idarticulo[$cont]);
+          //dd($articulo->stock);
+          $articulo->stock += $cantidad[$cont];
+          $articulo->save();
+
           $detalle->save();
           $cont=$cont+1;
         }

@@ -53,7 +53,12 @@
           <input type="text" name="descripcion" value="{{old('descripcion')}}" required class="form-control" placeholder="descripcion ...">
         </div>
       </div>
-
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="form-group">
+          <label for="precio_venta">Precio de Venta</label>
+          <input type="text" name="precio_venta" value="{{old('precio_venta')}}" required class="form-control" placeholder="precio de venta ...">
+        </div>
+      </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <div class="form-group">
           <label for="imagen">Imagen</label>

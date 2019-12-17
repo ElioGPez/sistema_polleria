@@ -46,6 +46,8 @@
             <div class="form-group">
               <label for="">Articulo</label>
               <select class="form-control selectpicker" data-live-search="true" name="pidarticulo" id="pidarticulo">
+              <option value="0">Seleccione un articulo...</option>
+
                 @foreach ($articulos as $articulo)
                   <option value="{{$articulo->idarticulo}}_{{$articulo->stock}}_{{$articulo->precio_promedio}}">{{$articulo->articulo}}</option>
                 @endforeach
@@ -63,14 +65,14 @@
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
             <div class="form-group">
               <label for="pstock">Stock</label>
-              <input type="number" name="pstock" value="{{$articulo->stock}}"" id="pstock" class="form-control" placeholder="stock" disabled>
+              <input type="number" name="pstock" value="" id="pstock" class="form-control" placeholder="stock" disabled>
             </div>
           </div>
           {{-- precioventa --}}
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
             <div class="form-group">
               <label for="pprecio_venta">Precio Venta</label>
-              <input type="number" disabled name="pprecio_venta" value="{{$articulo->precio_promedio}}" id="pprecio_venta" class="form-control" placeholder="P. Venta">
+              <input type="number" disabled name="pprecio_venta" value="" id="pprecio_venta" class="form-control" placeholder="P. Venta">
             </div>
           </div>
           {{-- descuento --}}
@@ -176,8 +178,10 @@
           // if (idarticulo!="" && cantidad!="" && cantidad>0 && descuento!="" && precio_venta!="") {
           // if(cantidad<stock){
 
-
-
+            //console.log(articulo);
+            if(articulo=='Seleccione un articulo...'){
+              alert('Debe seleccionar un articulo...');
+            }else
             if (parseInt(cantidad)<=parseInt(stock) && parseInt(cantidad)>0) {
               if(descuento!=0){
               desc = (cantidad*precio_venta)*descuento/100;
