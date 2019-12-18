@@ -40,7 +40,7 @@ class ClienteController extends Controller
      // $persona->tipo_persona = 'cliente';
       $persona->nombre= $request->get('nombre');
       //$persona->tipo_documento= $request->get('tipo_documento');
-      $persona->documento= $request->get('num_documento');
+      $persona->documento= $request->get('documento');
       $persona->direccion= $request->get('direccion');
       $persona->telefono= $request->get('telefono');
       $persona->email= $request->get('email');

@@ -35,8 +35,8 @@
 
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <div class="form-group">
-          <label for="num_documento">Documento</label>
-          <input type="text" name="num_documento" value="{{old('num_documento')}}" class="form-control" placeholder="Documento ...">
+          <label for="documento">Documento</label>
+          <input type="text" name="documento" value="{{old('documento')}}" class="form-control" placeholder="Documento ...">
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
