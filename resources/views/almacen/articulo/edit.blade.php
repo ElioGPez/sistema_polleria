@@ -57,6 +57,12 @@
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       <div class="form-group">
+        <label for="precio_venta">Precio de Venta</label>
+        <input type="text" name="precio_venta" value="{{$articulo->precio_venta}}" required class="form-control">
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      <div class="form-group">
         <label for="estado">Estado</label>
         <select class="form-control" name="estado">
           @if ($articulo->estado=='Inactivo')

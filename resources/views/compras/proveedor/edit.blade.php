@@ -2,7 +2,7 @@
 @section('contenido')
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-      <h3>Editar proveedor: {{$persona->nombre}}</h3>
+      <h3>Editar proveedor: {{$persona->razonsocial}}</h3>
       @if (count($errors)>0)
         <div class="alert alert-danger">
           <ul>
@@ -14,13 +14,14 @@
       @endif
     </div>
   </div>
-  {!!Form::model($persona,['method'=>'PATCH','route'=>['compras.proveedor.update',$persona->idpersona]])!!}
+  
+  {!!Form::model($persona,['method'=>'PATCH','route'=>['compras.proveedor.update',$persona->idproveedor]])!!}
   {!!Form::token()!!}
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" value="{{$persona->nombre}}" required class="form-control" placeholder="Nombre ...">
+        <label for="razonsocial">Razon Social</label>
+        <input type="text" name="razonsocial" value="{{$persona->razonsocial}}" required class="form-control" placeholder="Razon Social ...">
       </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -30,32 +31,10 @@
       </div>
     </div>
 
-
-
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       <div class="form-group">
-        <label for="">Documento</label>
-        <select class="form-control" name="tipo_documento">
-          @if ($persona->tipo_documento=='DNI')
-            <option value="DNI" selected>DNI</option>
-            <option value="RUC" >RUC</option>
-            <option value="PAS" >PAS</option>
-          @elseif ($persona->tipo_documento=='RUC')
-            <option value="DNI" >DNI</option>
-            <option value="RUC" selected>RUC</option>
-            <option value="PAS" >PAS</option>
-          @else
-            <option value="DNI" >DNI</option>
-            <option value="RUC" >RUC</option>
-            <option value="PAS" selected>PAS</option>
-          @endif
-        </select>
-      </div>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-      <div class="form-group">
-        <label for="num_documento">Documento</label>
-        <input type="text" name="num_documento" value="{{$persona->num_documento}}" class="form-control" placeholder="Documento ...">
+        <label for="cuit">CUIT</label>
+        <input type="text" name="cuit" value="{{$persona->cuit}}" class="form-control" placeholder="CUIT ...">
       </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">

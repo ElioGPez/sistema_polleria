@@ -25,7 +25,6 @@
                 <th>Articulo</th>
                 <th>Cantidad</th>
                 <th>Precio Compra</th>
-                <th>Precio Venta</th>
                 <th>Subtotal</th>
               </thead>
               <tfoot>
@@ -42,7 +41,6 @@
                     <td>{{$det->articulo}}</td>
                     <td>{{$det->cantidad}}</td>
                     <td>{{$det->precio_compra}}</td>
-                    <td>{{$det->precio_venta}}</td>
                     <td>{{$det->cantidad*$det->precio_compra}}</td>
                   </tr>
                 @endforeach

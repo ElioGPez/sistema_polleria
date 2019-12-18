@@ -52,13 +52,14 @@ class ProveedorController extends Controller
     }
 
     public function show($id){
-      return view('compras.proveedor.show',['persona'=>Persona::findOrFail($id)]);
+      return view('compras.proveedor.show',['persona'=>Proveedor::findOrFail($id)]);
     }
     public function edit($id){
-      return view('compras.proveedor.edit',['persona'=>Persona::findOrFail($id)]);
+      return view('compras.proveedor.edit',['persona'=>Proveedor::findOrFail($id)]);
 
     }
-    public function update(PersonaFormRequest $request, $id){
+    public function update(ProveedorFormRequest $request, $id){
+      //dd("no llega");
       $persona = Proveedor::findOrFail($id);
       $persona->razonsocial= $request->get('razonsocial');
     //  $persona->tipo_documento= $request->get('tipo_documento');
